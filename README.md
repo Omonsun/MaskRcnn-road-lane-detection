@@ -54,6 +54,7 @@ It’s trained on a custom COCO-format dataset for robust, multi-class lane dete
 3. **Install Mask R-CNN library**  
    - Use [Matterport’s Mask R-CNN](https://github.com/matterport/Mask_RCNN)  
    - Or for TensorFlow 2.x + Keras 2.x, use [Kamlesh364’s Mask-RCNN-TF2.7.0-keras2.7.0](https://github.com/Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0/tree/main) 🚀
+   - https://www.youtube.com/watch?v=xJtmj6hX5Lg --- To install tf gpu with miniconda
    - https://www.youtube.com/watch?v=Fu_km7FXyaU ---youtube link to setup the environment
    - In my case I used my notebook in the mrcnn environment, so that I dont have to manually install the mrcnn in the new conda environment
 
