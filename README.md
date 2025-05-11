@@ -1,22 +1,31 @@
-# Mask R-CNN Road Lane Detection
+# 🛣️ Mask R-CNN Road Lane Detection
 
-This repository contains an implementation of a road lane detection system using Mask R-CNN, a deep learning framework for instance segmentation. The model is trained on a custom dataset (COCO format) to detect multiple classes of road lane markings.
+Welcome to the **Mask R-CNN Road Lane Detection** project!  
+Detect and segment road lane markings from images using deep learning and instance segmentation.  
+Let’s get started! 🚦
 
-## Project Overview
+---
 
-The project leverages the Mask R-CNN architecture with a ResNet-101 backbone to perform instance segmentation on road lane images. It detects and segments various types of lane markings such as solid lines, dotted lines, double lines, road signs, and dividers.
+## 🧠 Project Overview
 
-## Features
+This project uses **Mask R-CNN** with a ResNet-101 backbone to find and segment different types of road lane markings, such as solid lines, dotted lines, double lines, and more.  
+It’s trained on a custom COCO-format dataset for robust, multi-class lane detection.
 
-- Instance segmentation of road lanes with Mask R-CNN
-- Supports 7 lane marking classes plus background
-- Uses COCO dataset format for training and validation
-- Training configuration optimized for lane detection
-- Visualization of detected masks on images
+---
 
-## Classes Detected
+## ✨ Features
 
-- Background (BG)
+- 🎯 **Instance segmentation** for road lanes
+- 🏷️ Detects 7 lane marking classes + background
+- 📁 **COCO format** for easy dataset management
+- ⚡ Optimized training configuration
+- 🖼️ Visualizes detected masks on images
+
+---
+
+## 🏷️ Classes Detected
+
+- BG (Background)
 - road-roads
 - divider-line
 - dotted-line
@@ -25,71 +34,89 @@ The project leverages the Mask R-CNN architecture with a ResNet-101 backbone to 
 - road-sign-line
 - solid-line
 
-## Setup and Installation
+---
 
-1. **Clone the repository:**
+## ⚙️ Setup and Installation
+
+1. **Clone the repository**  
    ```bash
    git clone 
    cd 
    ```
 
-2. **Create a Python environment and install dependencies:**
+2. **Create a Python environment & install dependencies**  
    ```bash
    conda create -n mrcnn python=3.8
    conda activate mrcnn
    pip install tensorflow keras numpy matplotlib
    ```
 
-3. **Install the Mask R-CNN library dependencies:**
-   - Clone the [Mask R-CNN repository by Matterport](https://github.com/matterport/Mask_RCNN) or use [Kamlesh364's Mask R-CNN for TensorFlow 2.7.0 and Keras 2.7.0](https://github.com/Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0/tree/main) for easy TF2 compatibility.
+3. **Install Mask R-CNN library**  
+   - Use [Matterport’s Mask R-CNN](https://github.com/matterport/Mask_RCNN)  
+   - Or for TensorFlow 2.x + Keras 2.x, use [Kamlesh364’s Mask-RCNN-TF2.7.0-keras2.7.0](https://github.com/Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0/tree/main) 🚀
+   - https://www.youtube.com/watch?v=Fu_km7FXyaU ---youtube link to setup the environment
+   - In my case I used my notebook in the mrcnn environment, so that I dont have to manually install the mrcnn in the new conda environment
 
-4. **Download the COCO pretrained weights:**
-   - Download `mask_rcnn_coco.h5` from the official Mask R-CNN repository and place it in the project directory.
+4. **Download COCO pretrained weights**  
+   - Download `mask_rcnn_coco.h5` and place it in your project directory.
 
-5. **Prepare your dataset in COCO format** under the directory specified by `COCO_DIR` in the code.
+5. **Prepare your dataset**  
+   - Organize your data in COCO format under the directory specified by `COCO_DIR` in the code.
 
-## Usage
+---
 
-### Configuration
+## 🚀 Usage
 
-Modify the `InferenceConfig` class to adjust parameters such as number of classes, image size, and training steps.
+### 🛠️ Configuration
 
-### Training
+Edit the `InferenceConfig` class to set:
+- Number of classes
+- Image size (e.g., 128x128)
+- Training steps, etc.
 
-Run the training script to start training the model:
+### 🏋️‍♂️ Training
 
+Start training your model:
 ```python
 model.train(dataset_train, dataset_val, learning_rate=config.LEARNING_RATE, epochs=5, layers='all')
 ```
+- Uses COCO weights for initialization
+- Trains on your custom dataset
 
-- Training data and validation data are loaded from the COCO dataset directory.
-- The model is initialized with COCO weights and fine-tuned on the road lane dataset.
+### 👀 Visualization
 
-### Visualization
-
-Visualize masks on sample images using:
-
+Display masks on images:
 ```python
 visualize.display_top_masks(image, mask, class_ids, dataset_train.class_names)
 ```
 
-## Directory Structure
+---
+
+## 📁 Directory Structure
 
 ```
-/logs/             # Directory for saving training logs and checkpoints
-/mask_rcnn_coco.h5 # Pretrained COCO weights
-/road_lane_instance_segmentation/ # Dataset directory with train and val annotations
+/logs/                        # Training logs & checkpoints
+/mask_rcnn_coco.h5            # Pretrained COCO weights
+/road_lane_instance_segmentation/  # Dataset (train/val annotations)
 ```
 
-## Notes
+---
 
-- The model uses images resized to 128x128 for training.
-- The number of classes is set to 8 (1 background + 7 lane classes).
-- GPU support is enabled for training.
-- Training logs and checkpoints are saved under the `logs` directory.
+## 💡 Notes
 
-## References
+- Images are resized to 128x128 for training 🖼️
+- 8 classes (1 background + 7 lane types)
+- GPU support enabled for faster training ⚡
+- Logs and checkpoints saved in `logs/`
+
+---
+
+## 📚 References
 
 - [Mask R-CNN by Matterport](https://github.com/matterport/Mask_RCNN)
-- [Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0 (TensorFlow 2.x + Keras 2.x compatible Mask R-CNN)](https://github.com/Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0/tree/main)
+- [Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0](https://github.com/Kamlesh364/Mask-RCNN-TF2.7.0-keras2.7.0/tree/main) 🧠
 - COCO dataset format for instance segmentation
+
+---
+
+## 🙌 Happy Coding!
